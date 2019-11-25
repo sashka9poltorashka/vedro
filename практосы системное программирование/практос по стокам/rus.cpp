@@ -13,11 +13,12 @@ int main()
 	cout<<"imput simvol: ";
     cin >> chr;// символ  
     char *razd = " ,.";
-    slovo = strtok(str,razd);
+    slovo = strtok(str,razd);//разделяет предложение на слова
+	//и убирает ненужные символы
     bool nashel =false;
-            while (slovo)
+            while (slovo)//проверяет каждое слово
             {   
-                if( slovo[0] == chr)
+                if( slovo[0] == chr)//если первая буква слова равна нужному символу
                 {
                 nashel = true;
                 cout << slovo;
@@ -33,18 +34,19 @@ int main()
                 }
             cout << '\n';
 
-len = strlen(str);
+len = strlen(str);//длинна всей строки
 int kol=0;
   
   for (int i=0; i < len; i++)
     {
-       if (str[i]==' ')
+       if (str[i]==' ')//кол-во пробелов в строке
         {
            kol++;
         }
         
     }
-    if(kol == len)
+    if(kol == len)//если кол-во пробелов равно длине строки,
+	          //значит вся строка из пробелов
     {
         cout<<"no";
     }
