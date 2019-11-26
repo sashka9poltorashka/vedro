@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://pole.tscn" type="PackedScene" id=1]
+[ext_resource path="res://chel.tscn" type="PackedScene" id=2]
+
+[node name="scen" type="Node2D" index="0"]
+
+position = Vector2( 2.14639, 0 )
+
+[node name="StaticBody2D" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( -2.00003, 0 )
+
+[node name="StaticBody2D2" parent="." index="1" instance=ExtResource( 1 )]
+
+position = Vector2( -640.246, 0.0248566 )
+
+[node name="StaticBody2D3" parent="." index="2" instance=ExtResource( 1 )]
+
+position = Vector2( 635.821, -0.0185242 )
+
+[node name="play" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( -411.188, 173.595 )
+
+
