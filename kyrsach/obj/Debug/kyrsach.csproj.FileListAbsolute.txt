@@ -1,0 +1,6 @@
+D:\kyrsach\obj\Debug\kyrsach.csprojAssemblyReference.cache
+D:\kyrsach\bin\Debug\kyrsach.exe.config
+D:\kyrsach\bin\Debug\kyrsach.exe
+D:\kyrsach\bin\Debug\kyrsach.pdb
+D:\kyrsach\obj\Debug\kyrsach.exe
+D:\kyrsach\obj\Debug\kyrsach.pdb
