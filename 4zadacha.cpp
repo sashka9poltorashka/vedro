@@ -10,7 +10,7 @@ class factorial
     int n;
 
 factorial();
-factorialFunc(int n);
+int factorialFunc(int n);
 void factorialInfo();
 };
 
