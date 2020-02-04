@@ -9,10 +9,10 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             Sborka PK = new Sborka();
+            reliz prod = new reliz();
             izgotov firm = new izgotov();
             ralizator firm1 = new ralizator();
-            reliz prod = new reliz();
-
+            
             Console.WriteLine("");
             Console.ReadLine();
 
