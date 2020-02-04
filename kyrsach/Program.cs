@@ -144,7 +144,7 @@ namespace ConsoleApp
             }
 
             int ghz_cpu = 0;
-            Console.WriteLine("\nВыберите тип процессора: ");
+            Console.WriteLine("\nВыберите частоту процессора: ");
 
             Console.WriteLine("1. 3.0");
             Console.WriteLine("2. 3.5");
