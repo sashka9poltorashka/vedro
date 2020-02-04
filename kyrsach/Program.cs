@@ -1,28 +1,34 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ConsoleApp
 {
+    class Programm {
+        static void Main(string[] args)
+        {
+            Sborka PK = new Sborka();
+            izgotov firm = new izgotov();
+            ralizator firm1 = new ralizator();
+            reliz prod = new reliz();
+
+            Console.WriteLine("");
+            Console.ReadLine();
+
+
+        }
+
+
+    }
 
     class izgotov
     {
 
         public string name, phone, place;
 
-        static void Main(string[] args)
-        {
-            DoSomething();
-            Console.WriteLine("Now u can type something");
-            Console.ReadLine();
-        }
-
-
         public izgotov()
         {
-            
-            //string str_buff;
 
             Console.WriteLine("Введите название Фирмы изготовителя: ");
             name = Console.ReadLine();
@@ -44,7 +50,7 @@ namespace ConsoleApp
 
 
 
-        public void izgotov_info()
+        public void info()
         {
             Console.WriteLine("\nИнформация о Фирме изготовителе:\n");
             Console.WriteLine($"\nНазвание: {name}");
@@ -56,6 +62,8 @@ namespace ConsoleApp
     class ralizator
     {
         public string name_reliz, phone_reliz, place_reliz;
+        reliz[] relizes;
+        Sborka[] sborkas;
         public ralizator()
         {
             Console.WriteLine("\nВведите название Фирмы реализатора: ");
@@ -74,16 +82,16 @@ namespace ConsoleApp
             this.name_reliz = name_reliz;
             this.phone_reliz = phone_reliz;
 
-  
+
 
         }
-    public void ralizator_info()
-    {
-        Console.WriteLine("\nИнформация о Фирме реализаторе:");
-        Console.WriteLine($"\nНазвание: {name_reliz}");
-        Console.WriteLine($"\nТелефон: {phone_reliz}");
-        Console.WriteLine($"\nместо размещения фирмы Фирмы реализатора: {place_reliz}");
-        
+        public void ralizator_info()
+        {
+            Console.WriteLine("\nИнформация о Фирме реализаторе:");
+            Console.WriteLine($"\nНазвание: {name_reliz}");
+            Console.WriteLine($"\nТелефон: {phone_reliz}");
+            Console.WriteLine($"\nместо размещения фирмы Фирмы реализатора: {place_reliz}");
+
         }
     }
 
@@ -92,9 +100,10 @@ namespace ConsoleApp
 
     class Sborka
     {
-        public string  cpu, cpu_ghz;
+        public string cpu, cpu_ghz;
         int ram, hdd;
         public int relise_day, relise_month, relise_year;
+        izgotov prod;
         public Sborka()
         {
             int tip_cpu = 0;
@@ -106,7 +115,7 @@ namespace ConsoleApp
             Console.WriteLine("4. Celeron");
             Console.WriteLine("5. Athlon");
             tip_cpu = int.Parse(Console.ReadLine());
-            
+
             switch (tip_cpu)
             {
                 case 1:
@@ -200,16 +209,16 @@ namespace ConsoleApp
             this.relise_month = relise_month;
             this.relise_year = relise_year;
         }
-            public void Sborka_info()
-            {
-                Console.WriteLine("\nИнформация о Сборке:\n");
-                Console.WriteLine($"\nНазвание процессора: {cpu}");
-                Console.WriteLine($"\nчастота процессора: {cpu_ghz}");
-                Console.WriteLine($"\nобъем оперативной памяти(в гигабайтах): {ram}");
-                Console.WriteLine($"\nобъем оперативной жесткого диска(в гигабайтах): {hdd}");
-                Console.WriteLine($"\nДата выпуска: {relise_day}");
-                Console.WriteLine($". {relise_month}");
-                Console.WriteLine($". {relise_year}");
+        public void Sborka_info()
+        {
+            Console.WriteLine("\nИнформация о Сборке:\n");
+            Console.WriteLine($"\nНазвание процессора: {cpu}");
+            Console.WriteLine($"\nчастота процессора: {cpu_ghz}");
+            Console.WriteLine($"\nобъем оперативной памяти(в гигабайтах): {ram}");
+            Console.WriteLine($"\nобъем оперативной жесткого диска(в гигабайтах): {hdd}");
+            Console.WriteLine($"\nДата выпуска: {relise_day}");
+            Console.WriteLine($". {relise_month}");
+            Console.WriteLine($". {relise_year}");
 
         }
 
@@ -219,38 +228,39 @@ namespace ConsoleApp
     class reliz
     {
         public int V;
+        public Sborka sborka;
         public float price;
-        public int relise_day1, relise_month1, relise_year1;
-        public void reliz1()
+        public int relise_day, relise_month, relise_year;
+        public reliz()
         {
 
             Console.WriteLine("\nВведите объем партии: ");
             V = int.Parse(Console.ReadLine());
 
 
-            price = V*5000;
+            price = V * 5000;
             Console.WriteLine("\nцена партии: " + price);
 
 
-                    
+
             Console.WriteLine("\nВведите день реализации: ");
-            relise_day1 = int.Parse(Console.ReadLine());
+            relise_day = int.Parse(Console.ReadLine());
             Console.WriteLine("\nВведите месяц реализации: ");
-            relise_month1 = int.Parse(Console.ReadLine());
+            relise_month = int.Parse(Console.ReadLine());
             Console.WriteLine("\nВведите год реализации: ");
-            relise_year1 = int.Parse(Console.ReadLine());
+            relise_year = int.Parse(Console.ReadLine());
 
 
         }
-        public reliz(int ram,int V, int hdd, string cpu, int relise_day1, int relise_month1, int relise_year1)
+        public reliz(Sborka sborka, int v, float price, int relise_day1, int relise_month1, int relise_year1)
         {
-            this.V = V;
-            this.price = hdd;
+            this.V = v;
+            this.price = price;
+            this.sborka = sborka;
 
-
-            this.relise_day1 = relise_day1;
-            this.relise_month1 = relise_month1;
-            this.relise_year1 = relise_year1;
+            this.relise_day = relise_day1;
+            this.relise_month = relise_month1;
+            this.relise_year = relise_year1;
         }
 
 
@@ -260,9 +270,9 @@ namespace ConsoleApp
             Console.WriteLine($"\nцена партии: {price}");
             Console.WriteLine($"\nобъем партии: {V}");
 
-            Console.WriteLine($"\nДата реализации: {relise_day1}");
-            Console.WriteLine($". {relise_month1}");
-            Console.WriteLine($". {relise_year1}");
+            Console.WriteLine($"\nДата реализации: {relise_day}");
+            Console.WriteLine($". {relise_month}");
+            Console.WriteLine($". {relise_year}");
 
         }
 
@@ -273,11 +283,3 @@ namespace ConsoleApp
 
     }
 }
-
-
-
-
-
-
-
-       
