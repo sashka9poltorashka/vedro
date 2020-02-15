@@ -5,21 +5,41 @@ using System.Text;
 
 namespace ConsoleApp
 {
-    class Programm {
+    class Programm
+    {
         static void Main(string[] args)
         {
-            Sborka PK = new Sborka();
-            reliz prod = new reliz();
-            izgotov firm = new izgotov();
-            ralizator firm1 = new ralizator();
-            
-            Console.WriteLine("");
-            Console.ReadLine();
+            string start;
+            Console.WriteLine("Начать программу? (да,нет)");
+            start = Console.ReadLine();
+            if (start == "да")
+            {
+                Console.WriteLine("Информация о сборке ");
+                Sborka PK = new Sborka();
+                Console.WriteLine("Информация о реализации ");
+                reliz prod = new reliz();
+                Console.WriteLine("\nИнформация о изготовителе ");
+                izgotov firm = new izgotov();
+                Console.WriteLine("Информация о реализаторе ");
+                ralizator firm1 = new ralizator();
 
+                string a;
 
+                Console.WriteLine("Вывсти информация о партии пк(да,нет): ");
+                a = Console.ReadLine();
+                if (a == "да")
+                {
+                    PK.Sborka_info();
+                    prod.reliz_info();
+                    firm.info();
+                    firm1.ralizator_info();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Конец");
+            }
         }
-
-
     }
 
     class izgotov
@@ -30,7 +50,7 @@ namespace ConsoleApp
         public izgotov()
         {
 
-            Console.WriteLine("Введите название Фирмы изготовителя: ");
+            Console.WriteLine("\nВведите название Фирмы изготовителя: ");
             name = Console.ReadLine();
 
             Console.WriteLine("\nВведите телефон Фирмы изготовителя: ");
@@ -48,14 +68,12 @@ namespace ConsoleApp
             this.place = place;
         }
 
-
-
         public void info()
         {
-            Console.WriteLine("\nИнформация о Фирме изготовителе:\n");
+            Console.WriteLine("\nИнформация о Фирме изготовителе");
             Console.WriteLine($"\nНазвание: {name}");
-            Console.WriteLine($"\nТелефон: {phone}");
-            Console.WriteLine($"\nместо размещения фирмы Фирмы изготовителя: {place}");
+            Console.WriteLine($"Телефон: {phone}");
+            Console.WriteLine($"место размещения фирмы Фирмы изготовителя: {place}");
         }
 
     }
@@ -87,16 +105,13 @@ namespace ConsoleApp
         }
         public void ralizator_info()
         {
-            Console.WriteLine("\nИнформация о Фирме реализаторе:");
+            Console.WriteLine("\nИнформация о Фирме реализаторе");
             Console.WriteLine($"\nНазвание: {name_reliz}");
-            Console.WriteLine($"\nТелефон: {phone_reliz}");
-            Console.WriteLine($"\nместо размещения фирмы Фирмы реализатора: {place_reliz}");
+            Console.WriteLine($"Телефон: {phone_reliz}");
+            Console.WriteLine($"место размещения фирмы Фирмы реализатора: {place_reliz}");
 
         }
     }
-
-
-
 
     class Sborka
     {
@@ -142,19 +157,17 @@ namespace ConsoleApp
                     Console.WriteLine("Default case");
                     break;
             }
-
-            int ghz_cpu = 0;
+            int cpu_ghz_int = 0;
             Console.WriteLine("\nВыберите частоту процессора: ");
-
             Console.WriteLine("1. 3.0");
             Console.WriteLine("2. 3.5");
             Console.WriteLine("3. 4.0");
             Console.WriteLine("4. 2.6");
             Console.WriteLine("5. 999");
-            tip_cpu = int.Parse(Console.ReadLine());
+            cpu_ghz_int = int.Parse(Console.ReadLine());
 
-            switch (ghz_cpu)
-            {
+                switch (cpu_ghz_int)
+                {
                 case 1:
                     Console.WriteLine("Case 1");
                     cpu_ghz = "3.0 ";
@@ -178,32 +191,28 @@ namespace ConsoleApp
                 default:
                     Console.WriteLine("Default case");
                     break;
-            }
-
-
+                }
 
             Console.WriteLine("\nВведите кол-во ОЗУ(в гигабайтах): ");
             ram = int.Parse(Console.ReadLine());
 
-
-
-            int hdd;
             Console.WriteLine("\nВведите объем жесткого диска(в гигабайтах): ");
             hdd = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("\nВведите день выпуска: ");
+            Console.WriteLine("Введите день выпуска: ");
             relise_day = int.Parse(Console.ReadLine());
-            Console.WriteLine("\nВведите месяц выпуска: ");
+            Console.WriteLine("Введите месяц выпуска: ");
             relise_month = int.Parse(Console.ReadLine());
-            Console.WriteLine("\nВведите год выпуска: ");
+            Console.WriteLine("Введите год выпуска: ");
             relise_year = int.Parse(Console.ReadLine());
         }
 
-        public Sborka(int ram, int hdd, string cpu, int relise_day, int relise_month, int relise_year)
+        public Sborka(int ram, int hdd, string cpu, string cpu_ghz, int relise_day, int relise_month, int relise_year)
         {
             this.ram = ram;
             this.hdd = hdd;
             this.cpu = cpu;
+            this.cpu_ghz = cpu_ghz;
 
             this.relise_day = relise_day;
             this.relise_month = relise_month;
@@ -211,23 +220,19 @@ namespace ConsoleApp
         }
         public void Sborka_info()
         {
-            Console.WriteLine("\nИнформация о Сборке:\n");
+            Console.WriteLine("\nИнформация о Сборке");
             Console.WriteLine($"\nНазвание процессора: {cpu}");
-            Console.WriteLine($"\nчастота процессора: {cpu_ghz}");
-            Console.WriteLine($"\nобъем оперативной памяти(в гигабайтах): {ram}");
-            Console.WriteLine($"\nобъем оперативной жесткого диска(в гигабайтах): {hdd}");
-            Console.WriteLine($"\nДата выпуска: {relise_day}");
-            Console.WriteLine($". {relise_month}");
-            Console.WriteLine($". {relise_year}");
-
+            Console.WriteLine($"частота процессора: {cpu_ghz}");
+            Console.WriteLine($"объем оперативной памяти(в гигабайтах): {ram}");
+            Console.WriteLine($"объем жесткого диска(в гигабайтах): {hdd}");
+            Console.WriteLine($"Дата выпуска: {relise_day}. {relise_month}. {relise_year}");
         }
-
 
     }
 
     class reliz
     {
-        public int V;
+        public int V;//объем
         public Sborka sborka;
         public float price;
         public int relise_day, relise_month, relise_year;
@@ -250,7 +255,6 @@ namespace ConsoleApp
             Console.WriteLine("\nВведите год реализации: ");
             relise_year = int.Parse(Console.ReadLine());
 
-
         }
         public reliz(Sborka sborka, int v, float price, int relise_day1, int relise_month1, int relise_year1)
         {
@@ -263,23 +267,12 @@ namespace ConsoleApp
             this.relise_year = relise_year1;
         }
 
-
         public void reliz_info()
         {
-            Console.WriteLine("\nИнформация о реализации:");
+            Console.WriteLine("\nИнформация о реализации");
             Console.WriteLine($"\nцена партии: {price}");
-            Console.WriteLine($"\nобъем партии: {V}");
-
-            Console.WriteLine($"\nДата реализации: {relise_day}");
-            Console.WriteLine($". {relise_month}");
-            Console.WriteLine($". {relise_year}");
-
+            Console.WriteLine($"объем партии: {V}");
+            Console.WriteLine($"Дата реализации: {relise_day}. {relise_month}. {relise_year}");
         }
-
-
-
-
-
-
     }
 }
