@@ -18,10 +18,7 @@ namespace ConsoleApp
                 Sborka PK = new Sborka();
                 Console.WriteLine("Информация о реализации ");
                 reliz prod = new reliz();
-                Console.WriteLine("\nИнформация о изготовителе ");
-                izgotov firm = new izgotov();
-                Console.WriteLine("Информация о реализаторе ");
-                ralizator firm1 = new ralizator();
+
 
                 string a;
 
@@ -31,13 +28,14 @@ namespace ConsoleApp
                 {
                     PK.Sborka_info();
                     prod.reliz_info();
-                    firm.info();
-                    firm1.ralizator_info();
+                    //firm.info();
+                    //firm1.ralizator_info();
+                    Console.WriteLine("Программа завершена");
                 }
             }
             else
             {
-                Console.WriteLine("Конец");
+                Console.WriteLine("Программа завершена");
             }
         }
     }
@@ -80,8 +78,7 @@ namespace ConsoleApp
     class ralizator
     {
         public string name_reliz, phone_reliz, place_reliz;
-        reliz[] relizes;
-        Sborka[] sborkas;
+
         public ralizator()
         {
             Console.WriteLine("\nВведите название Фирмы реализатора: ");
@@ -115,12 +112,15 @@ namespace ConsoleApp
 
     class Sborka
     {
+        public izgotov izg;
+        izgotov firm = new izgotov();
         public string cpu, cpu_ghz;
         int ram, hdd;
         public int relise_day, relise_month, relise_year;
-        izgotov prod;
+       
         public Sborka()
         {
+            
             int tip_cpu = 0;
             Console.WriteLine("\nВыберите тип процессора: ");
 
@@ -134,27 +134,27 @@ namespace ConsoleApp
             switch (tip_cpu)
             {
                 case 1:
-                    Console.WriteLine("Case 1");
+                    Console.WriteLine("Выбран Ryzen");
                     cpu = "Ryzen ";
                     break;
                 case 2:
-                    Console.WriteLine("Case 2");
+                    Console.WriteLine("Выбран Cor i");
                     cpu = "Cor i ";
                     break;
                 case 3:
-                    Console.WriteLine("Case 3");
+                    Console.WriteLine("Выбран Pentium");
                     cpu = "Pentium ";
                     break;
                 case 4:
-                    Console.WriteLine("Case 4");
+                    Console.WriteLine("Выбран Celeron");
                     cpu = "Celeron ";
                     break;
                 case 5:
-                    Console.WriteLine("Case 5");
+                    Console.WriteLine("Выбран Athlon");
                     cpu = "Athlon ";
                     break;
                 default:
-                    Console.WriteLine("Default case");
+                    Console.WriteLine("Некоректный ввод");
                     break;
             }
             int cpu_ghz_int = 0;
@@ -163,36 +163,35 @@ namespace ConsoleApp
             Console.WriteLine("2. 3.5");
             Console.WriteLine("3. 4.0");
             Console.WriteLine("4. 2.6");
-            Console.WriteLine("5. 999");
+            Console.WriteLine("5. 4.5");
             cpu_ghz_int = int.Parse(Console.ReadLine());
-
                 switch (cpu_ghz_int)
                 {
                 case 1:
-                    Console.WriteLine("Case 1");
+                    Console.WriteLine("Выбрана частота 3.0");
                     cpu_ghz = "3.0 ";
                     break;
                 case 2:
-                    Console.WriteLine("Case 2");
+                    Console.WriteLine("Выбрана частота 3.5");
                     cpu_ghz = "3.5 ";
                     break;
                 case 3:
-                    Console.WriteLine("Case 3");
+                    Console.WriteLine("Выбрана частота 4.0");
                     cpu_ghz = "4.0 ";
                     break;
                 case 4:
-                    Console.WriteLine("Case 4");
+                    Console.WriteLine("Выбрана частота 2.6");
                     cpu_ghz = "2.6 ";
                     break;
                 case 5:
-                    Console.WriteLine("Case 5");
-                    cpu_ghz = "999 ";
+                    Console.WriteLine("Выбрана частота 4.5");
+                    cpu_ghz = "4.5 ";
                     break;
                 default:
-                    Console.WriteLine("Default case");
+                    Console.WriteLine("Некоректный ввод");
                     break;
                 }
-
+            
             Console.WriteLine("\nВведите кол-во ОЗУ(в гигабайтах): ");
             ram = int.Parse(Console.ReadLine());
 
@@ -226,12 +225,15 @@ namespace ConsoleApp
             Console.WriteLine($"объем оперативной памяти(в гигабайтах): {ram}");
             Console.WriteLine($"объем жесткого диска(в гигабайтах): {hdd}");
             Console.WriteLine($"Дата выпуска: {relise_day}. {relise_month}. {relise_year}");
+            firm.info();
         }
 
     }
 
     class reliz
     {
+        public ralizator realis;
+        ralizator firm1 = new ralizator();//надо  вписать реализатора
         public int V;//объем
         public Sborka sborka;
         public float price;
@@ -245,8 +247,6 @@ namespace ConsoleApp
 
             price = V * 5000;
             Console.WriteLine("\nцена партии: " + price);
-
-
 
             Console.WriteLine("\nВведите день реализации: ");
             relise_day = int.Parse(Console.ReadLine());
@@ -273,6 +273,7 @@ namespace ConsoleApp
             Console.WriteLine($"\nцена партии: {price}");
             Console.WriteLine($"объем партии: {V}");
             Console.WriteLine($"Дата реализации: {relise_day}. {relise_month}. {relise_year}");
+            firm1.ralizator_info();
         }
     }
 }
